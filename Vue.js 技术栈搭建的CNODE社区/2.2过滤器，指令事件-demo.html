@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="dataApp">
+    {{ date | formatDate }}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el:"#dataApp",
+        data:{
+            date: new Date(),//现在有了这个数据但是还没有满足实时显示的需求，用mounted            
+        },
+        filters:{
+            formatDate: function(value){
+                var date = new Date(value);
+                var year = date.getFullYear();
+                var month = plusDate(date.getMonth() + 1);
+                var day = plusDate(date.getDate());
+                var hours = plusDate(date.getHours());
+                var min = plusDate(date.getMinutes());
+                var sec = plusDate(date.getSeconds());
+                return year + '-' + month + '-' + day + ' ' + hours + '-' + min + '-' + sec
+            }
+        },
+        mounted: function(){
+            var _this = this; //这里的this 就是vue实例
+            _this.timer = setInterval(()=>{
+                _this.date = new Date();
+            },1000)
+        },
+        beforeDestroy:function(){
+            if(_this.timer){
+                clearInterval(_this.timer)
+            }
+        }
+    })
+    var plusDate = function(value){
+        return value<10? '0'+value: value
+    }
+</script>
+</body>
+</html>
