@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+<div id="demo">
+<input type="text" v-model="msg"><br>
+<textarea cols="30" rows="10" v-model="value">我是初始化值</textarea>
+<hr>
+选择你的英雄<br>
+上单：<input type="radio" name="checks" value="达摩" v-model="hero"><br>
+打野：<input type="radio" name="checks" value="荆轲" v-model="hero"><br>
+法师：<input type="radio" name="checks" value="安琪拉" v-model="hero"><br>
+你选择的英雄是---{{hero}}
+<hr>
+我方打野<br>
+是否红开（v-bind）：<input type="checkbox" v-bind:checked="oneradio"><br>
+是否辅助跟随（v-model）：<input type="checkbox" v-model ="oneradio">
+<hr>
+打野四级<br>
+抓中路：<input type="checkbox" value="抓中路" v-model="gank"><br>
+打小龙：<input type="checkbox" value="大小龙" v-model="gank"><br>
+继续刷野：<input type="checkbox" value="继续刷野" v-model="gank"><br>
+我方打野{{gank}} <br>
+<hr>
+gank成功，有1000金币购买鞋子<br>
+<select v-model="selected">
+  <option value="草鞋">草鞋</option>
+  <option value="抵抗鞋">抵抗鞋</option>
+  <option value="攻速鞋">攻速鞋</option>
+</select>--现在购买的是 &nbsp {{selected}} <br>
+是否上高地：<input type="checkbox" v-model="toggle" :true-value="value1" :false-value="value2">
+{{toggle}} <br>
+上高地：{{toggle === value1}} <br>
+撤退：{{toggle === value2}} <br>
+</div>
+<script>
+  var demo = new Vue({
+    el:'#demo',
+    data:{
+      msg:'我是一号选手',
+      value:'我是二号选手',
+      hero:'',
+      oneradio:'true',
+      gank:[],
+      selected:'',
+      toggle:'true',
+      value1:true,
+      value2:false,
+    }
+  })
+</script>
+</body>
+</html>

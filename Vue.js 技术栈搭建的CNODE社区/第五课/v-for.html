@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <meta charset="utf-8">
+  <title>v-for</title>
+</head>
+<body>
+<div id="demo">
+  <ul>
+    <li v-for="vueMth in vueMethods">{{vueMth.name}}</li>
+  </ul>
+  <div v-for="value in nvshen">{{value}}</div>
+  <div v-for="(value,key,index) in nvshen">第{{index}}个女神是{{key}}{{value}}</div>
+</div>
+<script>
+  var app = new Vue({
+    el:'#demo',
+    data:{
+      vueMethods:[
+        {name:'多想'},
+        {name:'多做'},
+        {name:'多听'},
+      ],
+      nvshen:{
+        g1:'高',
+        g2:'陈',
+        g3:'王',
+      }
+    },
+  })
+</script>
+</body>
+</html>

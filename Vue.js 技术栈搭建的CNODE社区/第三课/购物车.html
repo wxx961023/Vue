@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <meta charset="utf-8">
+  <title>购物车计算总价</title>
+</head>
+<body>
+<div id="demo">
+  {{prices}}
+</div>
+<script>
+  var app = new Vue({
+    el:'#demo',
+    data:{
+      package1:[
+        {
+          name:'iPhone',
+          price: 6888,
+          count: 3,
+        },
+        {
+          name:'iPad',
+          price: 2355,
+          count: 1,
+        }
+      ],
+      package2:[{
+          name:'iPhone',
+          price: 688,
+          count: 1,
+        },{
+          name:'iPad',
+          price: 235,
+          count: 2,
+        }
+      ],
+    },
+    computed:{
+      prices: function(){
+        var prices = 0
+        for(let i=0;i<this.package1.length;i++){
+          prices += this.package1[0].price*this.package1[1].price
+        }
+        for(let i=0;i<this.package1.length;i++){
+          prices += this.package2[0].price*this.package2[1].price
+        }
+        return prices
+      }
+      
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<style>
+  .butBack{
+    background-color: red;
+  }
+  .butBack2{
+    background-color: blue;
+
+  }
+</style>
+<body>
+<div id="demo">
+  <input type="button" value="请点我" :class="{butBack:isBacK,butBack2:isBacK2}" @click="transColor">
+</div>
+<script>
+  var app = new Vue({
+    el:'#demo',
+    data:{
+      isBacK:true,
+      isBacK2:false
+    },
+    methods:{
+      transColor:function(){
+        if(this.isBacK === true){
+          this.isBacK = false
+          this.isBacK2 = true
+        }else if(this.isBacK2 === true){
+          this.isBacK = true
+          this.isBacK2 = false
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

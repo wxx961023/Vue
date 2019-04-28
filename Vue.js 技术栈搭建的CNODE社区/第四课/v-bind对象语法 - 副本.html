@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<meta charset="utf-8">
+<title>JS Bin</title>
+</head>
+<style>
+</style>
+<body>
+<div id="demo">
+  <div :style="{'color': color,'fontSize': fontSize}">我是什么颜色</div>
+</div>
+<script>
+  var app = new Vue({
+    el:'#demo',
+    data:{
+      color:'green',
+      fontSize: '24px'
+    },
+  })
+</script>
+</body>
+</html>

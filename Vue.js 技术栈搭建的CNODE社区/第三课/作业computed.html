@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+<div id="first">{{fullName}}</div>
+<script>
+  var demo = new Vue({
+    el:'#first',
+    data:{
+      firstName:'Si',
+      lastName:'Guapi',
+    },
+    computed:{
+      fullName:function(){
+        return this.firstName  + '' + this.lastName
+      }
+    },
+  })
+</script>
+</body>
+</html>
