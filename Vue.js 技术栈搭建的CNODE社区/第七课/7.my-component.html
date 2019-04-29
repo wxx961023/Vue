@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <meta charset="utf-8">
+  <title>全局组件</title>
+</head>
+<body>
+<div id="demo">
+<my-component></my-component>
+<my-component></my-component>
+
+</div>
+<script>
+  var demo = new Vue({
+    el:'#demo',
+    data:{
+      count:100,
+    },
+    components:{
+      'my-component':{
+        template:'<button @click="count++">{{count}}</button>',
+        data:function(){
+          return{
+            count:0
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <meta charset="utf-8">
+  <title>父组件传子组件</title>
+</head>
+<body>
+<div id="demo" style="text-align:center;border:2px solid red;">
+  <h2 >欢迎来到王者峡谷，瓦罗兰大陆</h2>
+  <child-component msg="你是被选中的召唤师"></child-component>
+</div>
+<script>
+  var demo = new Vue({
+    el:'#demo',
+    components:{
+      'child-component':{
+        props:['msg'],
+        template:'<div style="font-size:22px;color:red;font-weight:bold;">{{msg}}</div>',
+      }
+    }
+    
+  })
+</script>
+</body>
+</html>
