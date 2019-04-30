@@ -7,35 +7,41 @@
 </head>
 <body>
 <div id="demo" style="text-align:center;border:2px solid red;">
-<component :is="thisView"></component>
-<button @click="handleView('A')">第1句</button>
-<button @click="handleView('B')">第2句</button>
-<button @click="handleView('C')">第3句</button>
-<button @click="handleView('D')">第4句</button>
+<p>你的银行卡余额{{total}}</p>
+<child-component @change="handleTotal"></child-component>
 </div>
 <script>
-Vue.component('compA',{
-  template:'<div>离离原上草</div>'
-})
-Vue.component('compB',{
-  template:'<div>一岁一枯荣</div>'
-})
-Vue.component('compC',{
-  template:'<div>野火烧不尽</div>'
-})
-Vue.component('compD',{
-  template:'<div>春风吹又生</div>'
+Vue.component('child-component',{
+  template:'<div>\
+              <button @click="increase">+1000</button>\
+              <button @click="reduce">-1000</button>\
+            </div>',
+  data:function(){
+    return {
+      count:2000
+    }
+  },
+  methods:{
+    increase:function(){
+      this.count = this.count + 1000;
+      this.$emit('change',this.count);
+    },
+    reduce:function(){
+      this.count = this.count - 1000
+      this.$emit('change',this.count)      
+    }
+  }
 })
 var app = new Vue({
   el:'#demo',
   data:{
-    thisView:'compA'
+    total:2000,
   },
   methods:{
-    handleView:function(tag){
-      this.thisView = 'comp' + tag
+    handleTotal:function(value){
+      //此处的形参等于this.count
+      this.total = value
     }
-    
   }
 })
 </script>

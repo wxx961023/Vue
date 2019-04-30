@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <meta charset="utf-8">
+  <title>render的第二个参数</title>
+</head>
+<body>
+ <div id="demo">
+   <child></child>
+ </div>
+<script>
+  Vue.component('child',{
+    render:function(createElement){
+      return createElement('div',{
+        class:{
+          foo:true,
+          baz:false
+        }
+      })
+
+    }
+  })
+  var app = new Vue({
+    el:'#demo'
+  })
+</script>
+</body>
+</html>

@@ -1,49 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-  <meta charset="utf-8">
-  <title>子组件给父组件传递数据</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 </head>
 <body>
-<div id="demo" style="text-align:center;border:2px solid red;">
-<p>你的银行卡余额{{total}}</p>
-<child-component @change="handleTotal"></child-component>
+<div id="demo">
+  <component :is="view"></component>
+  <button @click="handleVie('A')">第1句</button>
+  <button @click="handleVie('B')">第2句</button>
+  <button @click="handleVie('C')">第3句</button>
+  <button @click="handleVie('D')">第4句</button>
 </div>
 <script>
-Vue.component('child-component',{
-  template:'<div>\
-              <button @click="increase">+1000</button>\
-              <button @click="reduce">-1000</button>\
-            </div>',
-  data:function(){
-    return {
-      count:2000
-    }
-  },
-  methods:{
-    increase:function(){
-      this.count = this.count + 1000;
-      this.$emit('change',this.count);
+  Vue.component('compA',{
+    template:'<div>离离原上草</div>'
+  })
+  Vue.component('compB',{
+    template:'<div>一岁一枯荣</div>'
+  })
+  Vue.component('compC',{
+    template:'<div>野火烧不尽</div>'
+  })
+  Vue.component('compD',{
+    template:'<div>春风吹又生</div>'
+  })
+  var app = new Vue({
+    el:'#demo',
+    data:{
+      view:'compA'
     },
-    reduce:function(){
-      this.count = this.count - 1000
-      this.$emit('change',this.count)      
+    methods:{
+      handleVie:function(tag){
+        this.view = 'comp' + tag
+      }
     }
-  }
-})
-var app = new Vue({
-  el:'#demo',
-  data:{
-    total:2000,
-  },
-  methods:{
-    handleTotal:function(value){
-      //此处的形参等于this.count
-      this.total = value
-    }
-  }
-})
+  })
 </script>
 </body>
 </html>
