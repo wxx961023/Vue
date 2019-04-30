@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <meta charset="utf-8">
+  <title>子组件给父组件传递数据</title>
+</head>
+<body>
+<div id="demo" style="text-align:center;border:2px solid red;">
+<p>你的银行卡余额{{total}}</p>
+<child-component v-model="total"></child-component>
+</div>
+<script>
+Vue.component('child-component',{
+  template:'<div>\
+              <button @click="increase">+1000</button>\
+            </div>',
+  data:function(){
+    return {
+      count:0
+    }
+  },
+  methods:{
+    increase:function(){
+      this.count = this.count + 1000;
+      this.$emit('input',this.count);
+    }
+  }
+})
+var app = new Vue({
+  el:'#demo',
+  data:{
+    total:0,
+  },
+})
+</script>
+</body>
+</html>

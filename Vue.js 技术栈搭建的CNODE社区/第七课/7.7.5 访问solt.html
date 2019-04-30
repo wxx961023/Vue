@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <meta charset="utf-8">
+  <title>访问solt</title>
+</head>
+<body>
+<div id="demo" style="text-align:center;border:2px solid red;">
+<child-component>
+  <h3 solt="header">我是标题</h3>
+</child-component>
+</div>
+<script>
+Vue.component('child-component',{
+  template:'<div>\
+              
+  '
+
+})
+var app = new Vue({
+  el:'#demo',
+  data:{
+
+  },
+})
+</script>
+</body>
+</html>

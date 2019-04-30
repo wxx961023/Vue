@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <meta charset="utf-8">
+  <title>子组件给父组件传递数据</title>
+</head>
+<body>
+<div id="demo" style="text-align:center;border:2px solid red;">
+<a-component></a-component>
+<b-component></b-component>
+</div>
+
+<script>
+Vue.component('a-component',{
+  template:'<div><button @click="handle">点击向B传数据</button></div>',
+  data:function(){
+    return {
+      aaa:'我是来自A组件的内容',
+      
+    }
+  },
+  methods:{
+    handle:function(){
+      this.$root.bus.$emit('lala',this.aaa)
+    }
+  }
+  
+})
+Vue.component('b-component',{
+  template:'<div></div>',
+  created:function(){
+    // A组件在实例创建的时候就监听事件---lala事件
+    this.$root.bus.$on('lala',function(value){
+      alert(value)
+    })
+  }
+  
+})
+var app = new Vue({
+  el:'#demo',
+  data:{
+    bus:new Vue(),
+  },
+})
+</script>
+</body>
+</html>

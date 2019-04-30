@@ -9,14 +9,24 @@
 <div id="demo" style="text-align:center;border:2px solid red;">
   <h2 >欢迎来到王者峡谷，瓦罗兰大陆</h2>
   <child-component msg="你是被选中的召唤师"></child-component>
+  <div>choose your hero</div>
+  <input type="text" v-model="hero">
+  <bind-component v-bind:choose="hero"></bind-component>
 </div>
 <script>
   var demo = new Vue({
     el:'#demo',
+    data:{
+      hero:'鲁班七号',
+    },
     components:{
       'child-component':{
         props:['msg'],
         template:'<div style="font-size:22px;color:red;font-weight:bold;">{{msg}}</div>',
+      },
+      'bind-component':{
+        props:['choose'],
+        template:'<div style="border:5px solid green">{{choose}}</div>'
       }
     }
     
