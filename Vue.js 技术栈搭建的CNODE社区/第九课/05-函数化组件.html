@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+ <div id="demo">
+   <a-component></a-component>
+   <b-component></b-component>
+ </div>
+<script>
+Vue.component('a-component',{
+  template:'<button @click="handle">点击给B组件传数据</button>',
+  data:function(){
+    return {
+      aaa:'这是来自A组件的数据'
+    }
+  },
+  methods:{
+    handle:function(){
+      this.$root.bus.$emit('delivery',this.aaa)
+      console.log(2)
+    }
+  }
+})
+Vue.component('b-component',{
+  template:'<div></div>',
+  created:function(){
+    this.$root.bus.$on('delivery',function(value){
+      console.log(1)
+      alert(value)
+    })
+  }
+})
+var app = new Vue({
+  el:'#demo',
+  data:{
+    bus:new Vue()
+  }
+})
+</script>
+ 
+</body>
+</html>
