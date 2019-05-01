@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+ <div id="demo">
+   <child-component>
+     <p>我是内容1</p>
+     <p>我是内容2</p>
+     <h3 slot="header">我是标题</h3>
+     <h5 slot="footer">我的底部</h5>
+   </child-component>
+ </div>
+<script>
+  Vue.component('child-component',{
+    render:function(createElement){
+      var header = this.$slots.header
+      var main = this.$slots.default
+      var footer = this.$slots.footer
+      return createElement('div',[
+        createElement('header',header),
+        createElement('main',main),
+        createElement('footer',footer),
+      ])
+    }
+  })
+  var app = new Vue({
+    el:'#demo',
+  })
+  </script>
+ 
+</body>
+</html>

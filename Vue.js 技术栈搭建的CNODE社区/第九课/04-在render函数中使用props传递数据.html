@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+ <div id="demo">
+   <button @click="switchShow">点我切换{{show}}</button>
+   <child-component :show="show">
+   </child-component>
+ </div>
+<script>
+  Vue.component('child-component',{
+    props:['show'],
+    render:function(createElement){
+      var imgsrc;
+      if(this.show){
+        imgsrc = 'http://p4.music.126.net/zWbywvbWj9VXRYkJuImKiA==/19143596951812814.jpg?param=200y200'
+      }else{
+        imgsrc = 'http://p4.music.126.net/eNzLmaQquwufVe-gxn0DvQ==/109951163970078880.jpg?param=200y200'
+      }
+      return createElement('img',{
+        attrs:{
+          src:imgsrc
+        }
+      })
+    }
+  })
+  var app = new Vue({
+    el:'#demo',
+    data:{
+      show:false,
+    },
+    methods:{
+      switchShow:function(){
+        this.show = !this.show
+      }
+    }
+  })
+</script>
+</body>
+</html>
