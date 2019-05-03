@@ -2,6 +2,7 @@
   <div id="app">
     <Header></Header>
     <div class="main">
+      <router-view name="slidebar"></router-view>
       <router-view name="main"></router-view>
     </div>
   </div>
@@ -26,6 +27,6 @@ export default {
   margin: 0 auto; 
 }
 body {
-    background-color: #e1e1e1;
+  background-color: #e1e1e1;
 }
 </style>
