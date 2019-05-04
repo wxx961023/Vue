@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import Axios from 'axios'
 
+
 Vue.prototype.$http = Axios;
 Vue.config.productionTip = false
 

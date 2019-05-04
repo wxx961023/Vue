@@ -1,5 +1,5 @@
 <template>
-    <div class="article">
+    <div class="article markdown-body">
         <div class="loading" v-if="isLoading">
             <img src="../assets/loading.gif">
         </div>
@@ -81,7 +81,7 @@ export default {
           '$route'(to,from){
             this.getArticleData()
           }
-      }
+    }
 }
 </script>
 <style>
@@ -89,11 +89,10 @@ export default {
 </style>
 
 <style>
-    @import url('../assets/markdown-github.css');  
+    @import url('https://cdn.bootcss.com/github-markdown-css/3.0.1/github-markdown.min.css');  
     .topbar {
         padding: 10px;
         background-color: #f6f6f6;
-        height: 16px;
         font-size: 12px;
         margin-top: 10px;
     }
